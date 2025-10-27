@@ -190,7 +190,7 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new NewProjectAudioProcessor();
 }
-
+// Initialize all the plugin framework parameters, specifying acceptable ranges for them to take.
 juce::AudioProcessorValueTreeState::ParameterLayout
 NewProjectAudioProcessor::createParameterLayout()
 {
