@@ -2,7 +2,7 @@
   ==============================================================================
 
     This file contains the basic framework code for a JUCE plugin processor. 
-	The main code functionality is here.
+	The main signal processing functionality is here.
 
   ==============================================================================
 */
@@ -11,6 +11,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
+// Ensures the plugin is initialized as an effects plugin - not a midi effect or synth plugin.
 NewProjectAudioProcessor::NewProjectAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
@@ -93,7 +94,7 @@ void NewProjectAudioProcessor::changeProgramName (int index, const juce::String&
 //==============================================================================
 void NewProjectAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Plugin initialization
+    // Plugin initialization of sample rate, block size (number of buffers), channels, and the left and right reverb channels. Think of a buffer as the short-term memory of an audio plugin.
     juce::dsp::ProcessSpec spec;
     spec.sampleRate = sampleRate;
 	spec.maximumBlockSize = samplesPerBlock;
@@ -141,7 +142,7 @@ void NewProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-    // Audio is split into buffers to be processed. This applies all the parameter values to the audio buffers.
+    // This applies all the parameter values to the processed audio buffers.
     params.roomSize = *apvts.getRawParameterValue("Room Size");
     params.damping = *apvts.getRawParameterValue("Damping");
     params.width = *apvts.getRawParameterValue("Width");
@@ -256,6 +257,7 @@ NewProjectAudioProcessor::createParameterLayout()
                 return juce::String(value * 100, 0); },
         nullptr));
 
+	// Disables audio freezing for the plugin
     layout.add(std::make_unique<juce::AudioParameterBool>("Freeze", "Freeze", false));
 
     return layout;
