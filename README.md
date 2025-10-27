@@ -23,7 +23,7 @@ There are two primary components in the project - a Plugin Editor (responsible f
 Due to dependence on the JUCE framework, there is a .jucer file that saves dependencies and configurations. 
 <br>
 
-[screen-recording_2025-10-27_06-25-57-779Z.webm](https://github.com/user-attachments/assets/2da02644-4130-4a46-a1fc-efbbc80d1b89)
+https://github.com/user-attachments/assets/747113a9-16b7-4a9a-abdf-ffa7d9e2146a
 
 <br>
 # How to Run the Application
