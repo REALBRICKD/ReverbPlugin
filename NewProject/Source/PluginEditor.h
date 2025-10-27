@@ -34,6 +34,12 @@ private:
 	juce::Slider dampingSlider;
     juce::Slider widthSlider;
 
+    //Initialize Labels
+    juce::Label wetLabel;
+    juce::Label roomSizeLabel;
+    juce::Label dampingLabel;
+    juce::Label widthLabel;
+
     // Attachments bind GUI controls to APVTS parameters
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> wetAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> roomSizeAttachment;
