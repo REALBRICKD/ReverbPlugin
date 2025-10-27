@@ -12,7 +12,13 @@ It processes the signal based on parameters such as:
 # Usage
 Video of the plugin in action.
 <br>
-https://github.com/user-attachments/assets/747113a9-16b7-4a9a-abdf-ffa7d9e2146a
+
+
+
+https://github.com/user-attachments/assets/f9215aef-7af8-4ae5-9da6-093483170af3
+
+
+
 <br>
 In it, I modulate the different parameters on an audio example. 
 <br>
