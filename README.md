@@ -36,12 +36,12 @@ Once the source code is open, you can build the project, and copy the .vst3 file
 # Optimization and Roadmap
 Audio programming requires a high degree of optimization due to the amount of operations taking place every second. Although the plugin performs well, I am hoping to optimize further through the use of helper functions.\
 This is just the beginning for this plugin - I plan to: add additional effects and UI elements to make the plugin more robust and capable. 
-*Add additional effects such as:
-  *A stereo shaper 
-  *A filter
-    *Potentially generating custom ones
-*Add additional UI elements and quality of life such as a
-  *A spectrum analyzer
-  *Different tabs
-  *More visually appealing UI
+* Add additional effects such as:
+  * A stereo shaper 
+  * A filter
+    * Potentially generating custom ones
+* Add additional UI elements and quality of life such as a
+  * A spectrum analyzer
+  * Different tabs
+  * More visually appealing UI
 
