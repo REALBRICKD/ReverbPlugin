@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    This file contains the basic framework code for a JUCE plugin processor.
+    Header for the plugin
 
   ==============================================================================
 */
@@ -56,7 +56,7 @@ public:
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
     juce::AudioProcessorValueTreeState apvts{ *this, nullptr, "Parameters", createParameterLayout() };
-
+// Initialize reverb channels - one for the left, and one for the right to enable stereo processing.
 private:
     juce::dsp::Reverb::Parameters params;
 	juce::dsp::Reverb leftReverb, rightReverb;
