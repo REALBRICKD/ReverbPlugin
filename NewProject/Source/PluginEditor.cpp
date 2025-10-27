@@ -29,18 +29,31 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioP
     setupSlider(wetSlider);
     wetSlider.setBounds(50, 50, 100, 300);
     addAndMakeVisible(wetSlider);
+	  wetLabel.setText("Dry/Wet", juce::dontSendNotification);
+	  wetLabel.attachToComponent(&wetSlider, false);
+	  addAndMakeVisible(wetLabel);
 
     setupSlider(roomSizeSlider);
     roomSizeSlider.setBounds(200, 50, 100, 300);
     addAndMakeVisible(roomSizeSlider);
+    roomSizeLabel.setText("Room Size", juce::dontSendNotification);
+    roomSizeLabel.attachToComponent(&roomSizeSlider, false);
+    addAndMakeVisible(roomSizeLabel);
 
     setupSlider(dampingSlider);
     dampingSlider.setBounds(350, 50, 100, 300);
     addAndMakeVisible(dampingSlider);
+    dampingLabel.setText("Damping", juce::dontSendNotification);
+    dampingLabel.attachToComponent(&dampingSlider, false);
+    addAndMakeVisible(dampingLabel);
 
     setupSlider(widthSlider);
     widthSlider.setBounds(500, 50, 100, 300);
     addAndMakeVisible(widthSlider);
+    widthLabel.setText("Dry/Wet", juce::dontSendNotification);
+    widthLabel.attachToComponent(&widthSlider, false);
+    addAndMakeVisible(widthLabel);
+
 
 
     // Create attachments that bind sliders to parameter IDs declared in createParameterLayout()
