@@ -7,7 +7,7 @@ It processes the signal based on parameters such as:
 * Wet/dry (how much to mix the pre-processed and post-processed signals in the output)
 * Width (how far apart the audio output of the channels will render, giving the illusion of a "wide" sound).
 <br>
-<br>
+
 # Usage
 Video of the plugin in action.
 <br>
@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/f9215aef-7af8-4ae5-9da6-093483170af3
 
 In it, I modulate the different parameters on an audio example. 
 <br>
-<br>
+
 
 # Production and Methodology
 Written in C++, based on the JUCE framework. \
