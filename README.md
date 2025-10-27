@@ -12,9 +12,6 @@ It processes the signal based on parameters such as:
 Video of the plugin in action.
 <br>
 
-https://github.com/user-attachments/assets/9fbe3ded-2056-4eca-8bfd-e963f8f8b7f5
-
-
 <br>
 In it, I modulate the different parameters on an audio example. 
 <br>
@@ -25,6 +22,9 @@ This plugin splits any incoming audio into a left and a right channel, which is 
 There are two primary components in the project - a Plugin Editor (responsible for the UI and linking it to the project's functionality) and Plugin Processor (core signal processing and functionality of the project). \
 Due to dependence on the JUCE framework, there is a .jucer file that saves dependencies and configurations. 
 <br>
+
+[screen-recording_2025-10-27_06-25-57-779Z.webm](https://github.com/user-attachments/assets/2da02644-4130-4a46-a1fc-efbbc80d1b89)
+
 <br>
 # How to Run the Application
 This application is designed to be hosted in DAWs as a .vst3 plugin, a format based on [Steinberg's VST3 SDK](https://github.com/steinbergmedia/vst3sdk) - the current industry standard. \
