@@ -49,7 +49,7 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioP
     setupSlider(widthSlider);
     widthSlider.setBounds(500, 50, 100, 300);
     addAndMakeVisible(widthSlider);
-    widthLabel.setText("Dry/Wet", juce::dontSendNotification);
+    widthLabel.setText("Width", juce::dontSendNotification);
     widthLabel.attachToComponent(&widthSlider, false);
     addAndMakeVisible(widthLabel);
 
