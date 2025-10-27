@@ -9,7 +9,7 @@ It processes the signal based on parameters such as:
 <br>
 <br>
 # Usage
-[Video of the plugin in action](https://cdn.discordapp.com/attachments/1425323266763128985/1432169798774689832/screen-recording_2025-10-27_00-39-39-896Z.webm?ex=69001390&is=68fec210&hm=2e1482a777f667297fd676262ccdaf03790efe35e43ddf2e281f421fa19cd2f3&). \
+[![Video of the plugin in action.](https://cdn.discordapp.com/attachments/1425323266763128985/1432169798774689832/screen-recording_2025-10-27_00-39-39-896Z.webm?ex=69001390&is=68fec210&hm=2e1482a777f667297fd676262ccdaf03790efe35e43ddf2e281f421fa19cd2f3&)](https://www.youtube.com/watch?v=6yOYeudIZdI) \
 In it, I modulate the different parameters on an audio example. 
 <br>
 <br>
