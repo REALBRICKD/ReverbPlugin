@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    This file contains the basic framework code for a JUCE plugin editor.
+    Plugin UI header.
 
   ==============================================================================
 */
@@ -25,16 +25,16 @@ public:
     void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
+    //Create new audio processor
     NewProjectAudioProcessor& audioProcessor;
 
+	//Initialize Sliders
     juce::Slider wetSlider;
     juce::Slider roomSizeSlider;
 	juce::Slider dampingSlider;
     juce::Slider widthSlider;
 
-    // Attachments bind GUI controls to APVTS parameters (thread-safe)
+    // Attachments bind GUI controls to APVTS parameters
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> wetAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> roomSizeAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> dampingAttachment;
