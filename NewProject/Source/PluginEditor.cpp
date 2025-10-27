@@ -10,6 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
+// Initialize UI elements of plugin, including sliders and labels.
 NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
