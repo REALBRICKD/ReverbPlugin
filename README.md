@@ -7,6 +7,7 @@ It processes the signal based on parameters such as:
 * Wet/dry (how much to mix the pre-processed and post-processed signals in the output)
 * Width (how far apart the audio output of the channels will render, giving the illusion of a "wide" sound).
 <br>
+
 # Usage
 Video of the plugin in action.
 <br>
