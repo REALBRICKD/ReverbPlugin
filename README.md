@@ -8,6 +8,7 @@ It processes the signal based on parameters such as:
 *Width (how far apart the audio output of the channels will render, giving the illusion of a "wide" sound).
 <br>
 <br>
+
 # Usage
 Video of the plugin in action.
 <br>
@@ -16,6 +17,7 @@ Video of the plugin in action.
 In it, I modulate the different parameters on an audio example. 
 <br>
 <br>
+
 # Production and Methodology
 Written in C++, based on the JUCE framework. \
 This plugin splits any incoming audio into a left and a right channel, which is the standard configuration for any kind of stereo audio processing. \
@@ -26,12 +28,14 @@ Due to dependence on the JUCE framework, there is a .jucer file that saves depen
 https://github.com/user-attachments/assets/747113a9-16b7-4a9a-abdf-ffa7d9e2146a
 
 <br>
+
 # How to Run the Application
 This application is designed to be hosted in DAWs as a .vst3 plugin, a format based on [Steinberg's VST3 SDK](https://github.com/steinbergmedia/vst3sdk) - the current industry standard. \
 In order to load the project properly, you must use the included .jucer file to be opened with Projucer. This allows porting to IDEs, and seamless loading of all dependencies. \
 Once the source code is open, you can build the project, and copy the .vst3 file into your plugins folder (the search path is configurable in every DAW). From there, it can be run as a standard effects plugin. 
 <br>
 <br>
+
 # Optimization and Roadmap
 Audio programming requires a high degree of optimization due to the amount of operations taking place every second. Although the plugin performs well, I am hoping to optimize further through the use of helper functions.\
 This is just the beginning for this plugin - I plan to: add additional effects and UI elements to make the plugin more robust and capable. 
