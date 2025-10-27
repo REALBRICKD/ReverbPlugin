@@ -31,7 +31,7 @@ Due to dependence on the JUCE framework, there is a .jucer file that saves depen
 
 # How to Run the Application
 * This application is designed to be hosted in DAWs as a .vst3 plugin, a format based on [Steinberg's VST3 SDK](https://github.com/steinbergmedia/vst3sdk) - the current industry standard. 
-* In order to load the project properly, you must use the included .jucer file to be opened with Projucer (The latest version can be found [Here](https://juce.com/download/). This allows porting to IDEs, and seamless loading of all dependencies. 
+* In order to load the project properly, you must use the included .jucer file to be opened with Projucer (The latest version can be found [Here](https://juce.com/download/)). This allows porting to IDEs, and seamless loading of all dependencies. 
 * Once the source code is open, you can build the project, and copy the .vst3 file into your plugins folder (the search path is configurable in every DAW). From there, it can be scanned by your DAW of choice and run as a standard effects plugin. 
 <br>
 
