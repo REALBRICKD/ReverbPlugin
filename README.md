@@ -2,10 +2,10 @@
 This project is a plugin that applies reverb effects to audio of your choice. It is primarily designed for Digital Audio Workstations (DAWs) such as Ableton, FL Studio, Audacity, etc... \
 This was largely done as an exercise to fully understanding both C++ and the audio tools we use. Development has proven eye-opening, and being able to program your own tools is a valuable asset to anybody who regularly works with audio. A wealth of knowledge is involved including knowledge in both computer science and audio engineering, with more advanced plugins even requiring knowledge in circuitry or fourier transformations. \
 It processes the signal based on parameters such as:
-*Dampening (how quickly higher frequencies decay) 
-*Room size (affects the "flavor" of the reverb)
-*Wet/dry (how much to mix the pre-processed and post-processed signals in the output)
-*Width (how far apart the audio output of the channels will render, giving the illusion of a "wide" sound).
+* Dampening (how quickly higher frequencies decay) 
+* Room size (affects the "flavor" of the reverb)
+* Wet/dry (how much to mix the pre-processed and post-processed signals in the output)
+* Width (how far apart the audio output of the channels will render, giving the illusion of a "wide" sound).
 <br>
 <br>
 
