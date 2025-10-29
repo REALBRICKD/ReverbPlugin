@@ -98,7 +98,7 @@ void NewProjectAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
     juce::dsp::ProcessSpec spec;
     spec.sampleRate = sampleRate;
 	spec.maximumBlockSize = samplesPerBlock;
-    spec.numChannels = 1;
+    spec.numChannels = 2;
 
     leftReverb.prepare(spec);
 	rightReverb.prepare(spec);
@@ -113,6 +113,7 @@ void NewProjectAudioProcessor::releaseResources()
 #ifndef JucePlugin_PreferredChannelConfigurations
 bool NewProjectAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
+	// Validates audio channel layout.
   #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
     return true;
@@ -134,6 +135,7 @@ bool NewProjectAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 
 void NewProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
+	// This is where the main audio processing occurs.
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
@@ -150,17 +152,22 @@ void NewProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     params.dryLevel = 1.0f - *apvts.getRawParameterValue("Dry/Wet");
     params.freezeMode = *apvts.getRawParameterValue("Freeze");
 
+	// Apply parameter values to left and right reverb channels
     leftReverb.setParameters(params);
     rightReverb.setParameters(params);
 
+	// Create a wrapper around the buffer
     juce::dsp::AudioBlock<float> block(buffer);
 
+	// the next few lines 
     auto leftBlock = block.getSingleChannelBlock(0);
     auto rightBlock = block.getSingleChannelBlock(1);
 
+	// prepare block for override
     juce::dsp::ProcessContextReplacing<float> leftContext(leftBlock);
     juce::dsp::ProcessContextReplacing<float> rightContext(rightBlock);
 
+	// Replace the blocks and therefore audio signal with the processed audio signal
     leftReverb.process(leftContext);
     rightReverb.process(rightContext);
 }
@@ -192,6 +199,7 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
     return new NewProjectAudioProcessor();
 }
 // Initialize all the plugin framework parameters, specifying acceptable ranges for them to take.
+// TODO: add helper method
 juce::AudioProcessorValueTreeState::ParameterLayout
 NewProjectAudioProcessor::createParameterLayout()
 {
