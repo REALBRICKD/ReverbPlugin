@@ -1,6 +1,6 @@
 # Multi-Slider Reverb Plugin
 This project is a plugin that applies reverb effects to audio of your choice. It is primarily designed for Digital Audio Workstations (DAWs) such as Ableton, FL Studio, Audacity, etc... \
-This was largely done as an exercise to fully understanding both C++ and the audio tools we use. Development has proven eye-opening, and being able to program your own tools is a valuable asset to anybody who regularly works with audio. A wealth of knowledge is involved including knowledge in both computer science and audio engineering, with more advanced plugins even requiring knowledge in circuitry or fourier transformations. \
+This was largely done as an exercise to fully understanding both C++ and the audio tools we use. Development has proven eye-opening, and being able to program your own tools is a valuable asset to anybody who regularly works with audio. \
 It processes the signal based on parameters such as:
 * Dampening (how quickly higher frequencies decay) 
 * Room size (affects the "flavor" of the reverb)
@@ -27,7 +27,6 @@ Written in C++, based on the JUCE framework. \
 This plugin splits any incoming audio into a left and a right channel, which is the standard configuration for any kind of stereo audio processing. \
 There are two primary components in the project - a Plugin Editor (responsible for the UI and linking it to the project's functionality) and Plugin Processor (core signal processing and functionality of the project). Both have a header and editor. \
 Due to dependence on the JUCE framework, there is a .jucer file that saves dependencies and configurations. 
-<br>
 <br>
 
 # How to Run the Application
