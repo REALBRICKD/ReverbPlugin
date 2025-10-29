@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    Header for the plugin
+    Header for the plugin. This initializes a lot of the variables that will be used.
 
   ==============================================================================
 */
@@ -61,5 +61,6 @@ private:
     juce::dsp::Reverb::Parameters params;
 	juce::dsp::Reverb leftReverb, rightReverb;
     //==============================================================================
+	// Declares class non-copyable, adds leak detector for debugging
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };
