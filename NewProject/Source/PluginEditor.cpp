@@ -25,12 +25,13 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioP
         s.setNumDecimalPlacesToDisplay(3);
     };
 
+	// Initialize sliders, TODO: make helper method
     setupSlider(wetSlider);
     wetSlider.setBounds(50, 50, 100, 300);
     addAndMakeVisible(wetSlider);
-	  wetLabel.setText("Dry/Wet", juce::dontSendNotification);
-	  wetLabel.attachToComponent(&wetSlider, false);
-	  addAndMakeVisible(wetLabel);
+	wetLabel.setText("Dry/Wet", juce::dontSendNotification);
+	wetLabel.attachToComponent(&wetSlider, false);
+	addAndMakeVisible(wetLabel);
 
     setupSlider(roomSizeSlider);
     roomSizeSlider.setBounds(200, 50, 100, 300);
@@ -52,9 +53,7 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioP
     widthLabel.setText("Width", juce::dontSendNotification);
     widthLabel.attachToComponent(&widthSlider, false);
     addAndMakeVisible(widthLabel);
-
-
-
+	
     // Create attachments that bind sliders to parameter IDs declared in createParameterLayout()
     wetAttachment      = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Dry/Wet", wetSlider);
     roomSizeAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Room Size", roomSizeSlider);
@@ -73,7 +72,11 @@ void NewProjectAudioProcessorEditor::paint (juce::Graphics& g)
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
 }
 
+// Allow resizing support
 void NewProjectAudioProcessorEditor::resized()
 {
     wetSlider.setBounds(getLocalBounds());
+	roomSizeSlider.setBounds(getLocalBounds());
+	dampingSlider.setBounds(getLocalBounds());
+	widthSlider.setBounds(getLocalBounds());
 }
