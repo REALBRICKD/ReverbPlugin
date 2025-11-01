@@ -137,39 +137,34 @@ bool NewProjectAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 void NewProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
-
-    // Clears any unused output channels to minimize feedback.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
-
-    // This applies all the parameter values to the processed audio buffers.
-    params.roomSize = *apvts.getRawParameterValue("Room Size");
-    params.damping = *apvts.getRawParameterValue("Damping");
-    params.width = *apvts.getRawParameterValue("Width");
-    params.wetLevel = *apvts.getRawParameterValue("Dry/Wet");
-    params.dryLevel = 1.0f - *apvts.getRawParameterValue("Dry/Wet");
-    params.freezeMode = *apvts.getRawParameterValue("Freeze");
-
-	// Apply parameter values to left and right reverb channels
-    leftReverb.setParameters(params);
-    rightReverb.setParameters(params);
-
-	// Create a wrapper around the buffer
-    juce::dsp::AudioBlock<float> block(buffer);
-
-	// the next few lines 
-    auto leftBlock = block.getSingleChannelBlock(0);
-    auto rightBlock = block.getSingleChannelBlock(1);
-
-	// prepare block for override
-    juce::dsp::ProcessContextReplacing<float> leftContext(leftBlock);
-    juce::dsp::ProcessContextReplacing<float> rightContext(rightBlock);
-
-	// Replace the blocks and therefore audio signal with the processed audio signal
-    leftReverb.process(leftContext);
-    rightReverb.process(rightContext);
+	auto totalNumInputChannels  = getTotalNumInputChannels();
+	auto totalNumOutputChannels = getTotalNumOutputChannels();
+	
+	// Clears any unused output channels to minimize feedback.
+	for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+	    buffer.clear (i, 0, buffer.getNumSamples());
+	
+	// This applies all the parameter values to the processed audio buffers.
+	params.roomSize = *apvts.getRawParameterValue("Room Size");
+	params.damping = *apvts.getRawParameterValue("Damping");
+	params.width = *apvts.getRawParameterValue("Width");
+	params.wetLevel = *apvts.getRawParameterValue("Dry/Wet");
+	params.dryLevel = 1.0f - *apvts.getRawParameterValue("Dry/Wet");
+	params.freezeMode = *apvts.getRawParameterValue("Freeze");
+	
+	leftReverb.setParameters(params);
+	rightReverb.setParameters(params);
+	
+	juce::dsp::AudioBlock<float> block(buffer);
+	
+	auto leftBlock = block.getSingleChannelBlock(0);
+	auto rightBlock = block.getSingleChannelBlock(1);
+	
+	juce::dsp::ProcessContextReplacing<float> leftContext(leftBlock);
+	juce::dsp::ProcessContextReplacing<float> rightContext(rightBlock);
+	
+	leftReverb.process(leftContext);
+	rightReverb.process(rightContext);
 }
 
 //==============================================================================
