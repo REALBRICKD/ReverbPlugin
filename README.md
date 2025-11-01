@@ -23,10 +23,10 @@ In it, I modulate the different parameters on an audio example.
 
 
 # Production and Methodology
-Audio programming requires a high degree of optimization due to the amount of operations taking place every second. Therefore, it is unsurprisingly written in C++, and based on the JUCE framework. \
+Audio programming requires a high degree of optimization due to the amount of operations taking place every second. Much of audio programming is done in C++ for this reason. This particular plugin is based on the JUCE framework. \
 This plugin splits any incoming audio into a left and a right channel, which is the standard configuration for any kind of stereo audio processing. \
 There are two primary components in the project - a Plugin Editor (responsible for the UI and linking it to the project's functionality) and Plugin Processor (core signal processing and functionality of the project). Both have a header and editor. \
-Due to dependence on the JUCE framework, there is a .jucer file that saves dependencies and configurations. These ensure the .vst3 file is built correctly, and loaded into the DAW.
+Due to dependence on the JUCE framework, there is a .jucer file that saves dependencies and configurations. These ensure the .vst3 file is built correctly and loaded into the DAW.
 <br>
 
 # How to Run the Application
