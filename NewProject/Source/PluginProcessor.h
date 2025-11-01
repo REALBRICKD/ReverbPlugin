@@ -9,11 +9,12 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include <atomic>
 
 //==============================================================================
 /**
 */
-class NewProjectAudioProcessor  : public juce::AudioProcessor
+class NewProjectAudioProcessor : public juce::AudioProcessor
 {
 public:
     //==============================================================================
@@ -61,9 +62,18 @@ public:
 private:
     // Initialize reverb channels - one for the left, and one for the right to enable stereo processing.
     juce::dsp::Reverb::Parameters params;
-	juce::dsp::Reverb leftReverb, rightReverb;
-    // Initialize String representation helper
+    juce::dsp::Reverb leftReverb, rightReverb;
+
+    // Cached pointers to parameter values to avoid repeated lookups in processBlock.
+     std::atomic<float>* roomSizeParam = nullptr;
+     std::atomic<float>* dampingParam = nullptr;
+     std::atomic<float>* widthParam = nullptr;
+     std::atomic<float>* dryWetParam = nullptr;
+     std::atomic<float>* freezeParam = nullptr;
+
+    // Helper for string formatting
     static juce::String checkValue (float value, int precision);
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };
