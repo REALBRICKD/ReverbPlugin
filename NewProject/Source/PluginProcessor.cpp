@@ -133,9 +133,9 @@ bool NewProjectAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 }
 #endif
 
+// This is where the main audio processing occurs.
 void NewProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-	// This is where the main audio processing occurs.
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
@@ -198,8 +198,8 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new NewProjectAudioProcessor();
 }
-// Initialize all the plugin framework parameters, specifying acceptable ranges for them to take.
-// TODO: add helper method
+
+// Initialize all the plugin framework parameters, specifying acceptable ranges for them to take. Also configures String representation of parameter values.
 juce::AudioProcessorValueTreeState::ParameterLayout
 NewProjectAudioProcessor::createParameterLayout()
 {
@@ -211,13 +211,7 @@ NewProjectAudioProcessor::createParameterLayout()
         0.5f,
         juce::String(),
         juce::AudioProcessorParameter::genericParameter,
-        [](float value, int) {
-            if (value * 100 < 10.0f)
-                return juce::String(value * 100, 0);
-            else if (value * 100 < 100.0f)
-                return juce::String(value * 100, 0);
-            else
-                return juce::String(value * 100, 0); },
+        NewProjectAudioProcessor::checkValue,
         nullptr));
 
     layout.add(std::make_unique<juce::AudioParameterFloat>("Damping",
@@ -226,13 +220,7 @@ NewProjectAudioProcessor::createParameterLayout()
         0.5f,
         juce::String(),
         juce::AudioProcessorParameter::genericParameter,
-        [](float value, int) {
-            if (value * 100 < 10.0f)
-                return juce::String(value * 100, 2);
-            else if (value * 100 < 100.0f)
-                return juce::String(value * 100, 1);
-            else
-                return juce::String(value * 100, 0); },
+        NewProjectAudioProcessor::checkValue,
         nullptr));
 
     layout.add(std::make_unique<juce::AudioParameterFloat>("Width",
@@ -241,13 +229,7 @@ NewProjectAudioProcessor::createParameterLayout()
         0.5f,
         juce::String(),
         juce::AudioProcessorParameter::genericParameter,
-        [](float value, int) {
-            if (value * 100 < 10.0f)
-                return juce::String(value * 100, 2);
-            else if (value * 100 < 100.0f)
-                return juce::String(value * 100, 1);
-            else
-                return juce::String(value * 100, 0); },
+        NewProjectAudioProcessor::checkValue,
         nullptr));
 
     layout.add(std::make_unique<juce::AudioParameterFloat>("Dry/Wet",
@@ -256,17 +238,23 @@ NewProjectAudioProcessor::createParameterLayout()
         0.5f,
         juce::String(),
         juce::AudioProcessorParameter::genericParameter,
-        [](float value, int) {
-            if (value * 100 < 10.0f)
-                return juce::String(value * 100, 2);
-            else if (value * 100 < 100.0f)
-                return juce::String(value * 100, 1);
-            else
-                return juce::String(value * 100, 0); },
+        NewProjectAudioProcessor::checkValue,
         nullptr));
 
 	// Disables audio freezing for the plugin
     layout.add(std::make_unique<juce::AudioParameterBool>("Freeze", "Freeze", false));
 
     return layout;
+}
+
+// Helper method to format parameter values with dynamic precision. This is called when Juce needs String Representation.
+juce::String NewProjectAudioProcessor::checkValue(float value, int precision)
+{
+        // Choose decimal precision based on value
+	    const float percent = value * 100.0f;
+        const int chosenPrecision = (percent < 10.0f) ? 2
+            : (percent < 100.0f) ? 1
+            : 0;
+
+        return juce::String(percent, chosenPrecision);
 }
