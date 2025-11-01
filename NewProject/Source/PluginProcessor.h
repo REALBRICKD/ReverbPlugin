@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    Header for the plugin. This initializes a lot of the variables that will be used.
+    Header for the plugin
 
   ==============================================================================
 */
@@ -55,12 +55,15 @@ public:
 
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
+    // Initialize AudioProcessorValueTreeState, enable managing of plugin parameters
     juce::AudioProcessorValueTreeState apvts{ *this, nullptr, "Parameters", createParameterLayout() };
-// Initialize reverb channels - one for the left, and one for the right to enable stereo processing.
+
 private:
+    // Initialize reverb channels - one for the left, and one for the right to enable stereo processing.
     juce::dsp::Reverb::Parameters params;
 	juce::dsp::Reverb leftReverb, rightReverb;
+    // Initialize String representation helper
+    static juce::String checkValue (float value, int precision);
     //==============================================================================
-	// Declares class non-copyable, adds leak detector for debugging
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };
